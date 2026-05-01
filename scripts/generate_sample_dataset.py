@@ -19,12 +19,12 @@ def generate(output_path: str, n_samples: int = 5000, seed: int = 42) -> None:
     )
     df = pd.DataFrame(X, columns=[f"feature_{i}" for i in range(15)])
     df["target"] = y
-    df["event_date"] = pd.date_range("2022-01-01", periods=n_samples, freq="H")
+    df["event_date"] = pd.date_range("2022-01-01", periods=n_samples, freq="h")
     df["category"] = np.random.choice(["A", "B", "C", "D"], size=n_samples)
 
     os.makedirs(os.path.dirname(output_path) if os.path.dirname(output_path) else ".", exist_ok=True)
     df.to_csv(output_path, index=False)
-    print(f"Generated {n_samples} rows → {output_path}")
+    print(f"Generated {n_samples} rows -> {output_path}")
     print(f"Class balance: {df['target'].value_counts(normalize=True).to_dict()}")
 
 

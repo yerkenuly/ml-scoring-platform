@@ -27,7 +27,7 @@ async def create_experiment(
         n_trials=body.n_trials,
         target_metric=body.target_metric,
         status="queued",
-        config_json=body.model_dump(),
+        config_json=body.model_dump(mode="json"),
     )
     db.add(experiment)
     await db.commit()

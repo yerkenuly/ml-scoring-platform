@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 import mlflow
 from fastapi import FastAPI
+import app.db.models  # noqa: F401 — registers all ORM models with SQLAlchemy metadata
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
